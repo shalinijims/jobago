@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    {% include 'layouts/head.html' %}
+ 
+  <body> 
+
+  <!-- Start header  -->
+  {% include 'layouts/header.html' %}
+  <!-- End header  -->
+
+
+  <!-- Start menu -->
+  {% include 'layouts/navbar.html' %}
+  <!-- End menu -->
+
+
+  <!-- Start search box -->
+  {% include 'layouts/searchbar.html' %}
+  <!-- End search box -->
+
+  <!-- content block -->
+  {% block content %}
+    {% endblock %}
+
+  <!-- Start footer -->
+  {% include 'layouts/footer.html' %}
+  <!-- End footer -->
+  
+  <!-- jQuery library -->
+  {% include 'layouts/foot.html' %}
+
+  </body>
+</html>
