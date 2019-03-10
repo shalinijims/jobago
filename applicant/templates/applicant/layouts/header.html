@@ -1,0 +1,44 @@
+{% load bootstrap4 %}
+{% load i18n %}
+
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">-->
+
+      <!--<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Jobago</a>-->
+      <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+      <!--<ul class="navbar-nav px-3">-->
+        <!--<li class="nav-item text-nowrap">-->
+           <!--<a class="nav-link" href="{% url 'applicant:log_out' %}">{% trans 'Log out' %}</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</nav>-->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+     <div class="navbar-header">
+      <a class="navbar-brand" href="/">Jobago</a>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="nav navbar-nav  ml-auto">
+            {% if request.session.applicant_id %}
+                 <li class="nav-item">
+                   <a class="nav-link" href="{% url 'applicant:dashboard' %}">{% trans 'Dashboard' %}</a>
+                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applicant:log_out' %}">{% trans 'Log out' %}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applicant:log_in' %}">{% trans 'Log in' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'applicant:sign_up' %}">{% trans 'Sign Up' %}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

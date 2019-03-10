@@ -1,0 +1,485 @@
+{% extends 'applicant/layouts/master.html' %}
+
+{% block title %}
+    Jobseeker Details - {{ block.super }}
+{% endblock %}
+  {% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+
+<!-- MultiStep Form -->
+<div class="row">
+    <div class="col-md-12 col-md-offset-3">
+        <form class="msform" id="basicDetail">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Personal Details</li>
+                 <li id="pd1">Education Details</li>
+                <li id="pd2">Work Details</li>
+                <li id="pd3">Skill Details</li>
+                <li id="pd4">Final Step</li>
+            </ul>
+            <!-- basic detail -->
+            <fieldset id="basic">
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+                   <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="firstname" id="firstname" placeholder="First Name"/>
+                         </div>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                           <input type="text" name="lastname" id="lastname" placeholder="Last Name"/>
+                         </div>
+                     </div>
+                  <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" name="phone" id="phone" placeholder="Phone" value="{{ request.session.mobile  }}" readonly/>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" name="email" id="email" placeholder="Email" value="{{ request.session.email }}" readonly/>
+                      </div>
+                  </div>
+                 <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <select name="gender" id="gender" >
+                             <option >--Select Gender--</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Other</option>
+                         </select>
+                         </div>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                             <select name="marital_status" id="marital_status" >
+                               <option>--Select Marital Status</option>
+                                <option value="1">Single</option>
+                                <option value="2">Married</option>
+                                <option value="3">Other</option>
+                             </select>
+                         </div>
+                     </div>
+                 <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" name="dob" id="dob"  placeholder="Date of Birth" data-date-format="YYYY-MM-DD"  />
+                     </div>
+                     <div class="col-md-6 col-sm-6 col-xs-6" >
+                       <select name="language" id="language" >
+                        <option > --- Select Language --- </option>
+                            {% for lang in language %}
+                            <option value="{{ lang.language_id }}">{{ lang.language_name}}</option>
+                            {% endfor %}
+                        </select>
+                     </div>
+                   </div>
+                 <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                      <select name="country" id="country"  >
+                        <option > --- Select Country--- </option>
+                        {% for country in country %}
+                        <option value="{{ country.country_id }}">{{ country.country_name }} </option>
+                        {% endfor %}
+                    </select>
+                     </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                      <select name="state" id="state" >
+                    <option > --- Select State --- </option>
+                        {% for state in state %}
+                        <option value="{{ state.state_id }}"> {{ state.state_name }} </option>
+                        {% endfor %}
+
+                    </select>
+
+                 </div>
+                 </div>
+
+                <input type="submit"  class="action-button" value="Next"/>
+            </fieldset>
+        </form>
+
+
+
+         <!--education details-->
+          <form class="msform" id="educationDetail">
+            <fieldset id="education" style="display:none">
+                <h2 class="fs-title">Education Details</h2>
+                <h3 class="fs-subtitle">Your presence on the social network</h3>
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                      <select name="course" id="course" >
+                        <option value=""> --- Select Course Type --- </option>
+                        {% for course in course %}
+                        <option value="{{  course.course_id }}">{{ course.course_name }} </option>
+                        {% endfor %}
+                    </select>
+                     </div>
+                     <div class="col-md-6 col-sm-6 col-xs-6" >
+                         <select name="institute" id="institute">
+                        <option > --- Select Institute --- </option>
+                        {% for institute in institute %}
+                        <option value="{{  institute.institue_id }}">{{ institute.institue_name }} </option>
+                        {% endfor %}
+                    </select>
+                     </div>
+                   </div>
+                 <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="batch_start" id="startYear" value="" placeholder=" Start Year"  class="date-picker-year" />
+                     </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="batch_end" id="endYear" value="" placeholder="End Year" class="date-picker-year" />
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="course" id="course" >
+                        <option value=""> --- Select Course Type --- </option>
+                        {% for course in course %}
+                        <option value="{{  course.course_id }}">{{ course.course_name }} </option>
+                        {% endfor %}
+                    </select>
+                     </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="degree" id="degree">
+                        <option value=""> --- Select Degree --- </option>
+                        {% for degree in degree %}
+                        <option value="{{  degree.degree_id }}">{{  degree.degree_name }} </option>
+                        {% endfor %}
+                    </select>
+                     </div>
+                 </div>
+                 <input type="submit"  class="action-button" value="Next"/>
+                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            </fieldset>
+          </form>
+
+
+
+
+          <!--work details-->
+          <form class="msform" id="workDetail">
+            <fieldset  id="work"  style="display:none">
+                <h2 class="fs-title">Work Details</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select name="industry"  id="industry" >
+                        <option > --- Select Industry --- </option>
+                            {% for industry in int_list %}
+                            <option value="{{ industry.id }}">{{ industry.name }}</option>
+                            {% endfor %}
+                        </select>
+                     </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                         <select name="functionalarea"  id="functionalarea">
+                        <option > --- Select Funcational Area --- </option>
+                            {% for fa in fa %}
+                            <option value="{{ fa.id }}">{{ fa.name }}</option>
+                            {% endfor %}
+                        </select>
+                     </div>
+                 </div>
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="job_title" value="" placeholder="Job Title" id="job_title"  />
+                     </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="company" value="" placeholder="Company Name" id="company"  />
+                     </div>
+                 </div>
+                <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="salary" value="" placeholder="Salary" id="salary"  />
+                     </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="duration" value="" placeholder="Time Period" id="duration"  />
+                     </div>
+                 </div>
+
+                <input type="submit"  class="action-button" value="Next"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            </fieldset>
+          </form>
+
+
+
+        <!--skill details -->
+        <form class="msform" id="skillDetail">
+             <fieldset id="skill" style="display:none">
+                <h2 class="fs-title">Skill Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+
+                     <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="fname" placeholder="First Name"/>
+                         </div>
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                           <input type="text" name="lname" placeholder="Last Name"/>
+                         </div>
+                     </div>
+                      <div class="row">
+                         <div class="col-md-6 col-sm-6 col-xs-12">
+                         <select name="gender" id="gender"  >
+                             <option >--Select Gender--</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Other</option>
+                         </select>
+                         </div>
+                         <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                             <!--<select name="marital_status" id="marital_status" >-->
+                               <!--<option>&#45;&#45;Select Marital Status</option>-->
+                                <!--<option value="1">Single</option>-->
+                                <!--<option value="2">Married</option>-->
+                                <!--<option value="3">Other</option>-->
+                             <!--</select>-->
+                         <!--</div>-->
+                     <!--</div>-->
+                   <!--<div class="row">-->
+                     <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                      <!--<input type="text" name="dob" id="dob" value="2018-09-30" placeholder="Date Available" data-date-format="YYYY-MM-DD"  />-->
+                     <!--</div>-->
+                     <!--<div class="col-md-6 col-sm-6 col-xs-6" >-->
+                       <!--<select name="language" id="language" >-->
+                        <!--<option > -&#45;&#45; Select Language -&#45;&#45; </option>-->
+                            <!--{% for lang in language %}-->
+                            <!--<option value="{{ lang.language_id }}">{{ lang.language_name}}</option>-->
+                            <!--{% endfor %}-->
+                        <!--</select>-->
+                     <!--</div>-->
+                   <!--</div>-->
+                 <!--<div class="row">-->
+                     <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                      <!--<select name="country" id="country" >-->
+                        <!--<option > -&#45;&#45; Select Country-&#45;&#45; </option>-->
+                        <!--{% for country in country %}-->
+                        <!--<option value="{{ country.country_id }}">{{ country.country_name }} </option>-->
+                        <!--{% endfor %}-->
+                    <!--</select>-->
+                     <!--</div>-->
+                       <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                      <!--<select name="state" id="state" >-->
+                    <!--<option > -&#45;&#45; Select State -&#45;&#45; </option>-->
+                        <!--{% for state in state %}-->
+                        <!--<option value="{{ state.state_id }}"> {{ state.state_name }} </option>-->
+                        <!--{% endfor %}-->
+
+                    <!--</select>-->
+
+                 <!--</div>-->
+                 <!--</div>-->
+                   <input type="submit"  class="action-button" value="Next"/>
+                   <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+
+            </fieldset>
+        </form>
+
+
+        <!--final step-->
+        <form class="msform" id="finalDetail">
+             <fieldset id="final" style="display:none">
+                <h2 class="fs-title">Final Submit</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                  <input type="file" name="resume" value="" placeholder="Resume" id="resume" />
+
+
+                 <input type="submit"  class="action-button" value="Next"/>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).on('submit','#basicDetail',function(e){
+    e.preventDefault();
+    var firstname=$("#firstname").val();
+    var lastname=$("#lastname").val();
+    var email=$("#email").val();
+    var phone=$("#phone").val();
+    var gender=$("#gender").val();
+    var marital_status=$("#marital_status").val();
+    var dob=$("#dob").val();
+    var language=$("#language").val();
+    var country=$("#country").val();
+    var state=$("#state").val();
+
+    if(firstname==''){
+      $("#firstname").css('border-color','red');
+      $("#firstname").focus();
+      return false;
+   } else {
+      $("#firstname").css('border-color','green');
+   }
+   if(email==''){
+      $("#email").css('border-color','red');
+      $("#email").focus();
+      return false;
+   } else {
+      $("#email").css('border-color','green');
+   }
+
+   if(gender==''){
+      $("#gender").css('border-color','red');
+      $("#gender").focus();
+      return false;
+   } else {
+      $("#gender").css('border-color','green');
+   }
+
+   if(country==''){
+      $("#country").css('border-color','red');
+      $("#country").focus();
+      return false;
+   } else {
+      $("#country").css('border-color','green');
+   }
+   if(state==''){
+      $("#state").css('border-color','red');
+      $("#state").focus();
+      return false;
+   } else {
+      $("#state").css('border-color','green');
+   }
+  $.ajax({
+   url:  '{% url 'applicant:basic' %}',
+   type: 'POST',
+   data: {'firstname':firstname,'lastname':lastname,'email':email,'phone':phone,'gender':gender,'marital_status':marital_status,'dob':dob,
+   'language':language,'country':country,'state':state},
+   success:function(data){
+     console.log(data);
+      alert(data);
+      //return false;
+    $('#basic').css('display','none');
+    $('#education').css('display','block');
+    $("#pd1").addClass("active");
+   }
+  });
+
+    });
+</script>
+<script>
+    $(document).on('submit','#educationDetail',function(e){
+   e.preventDefault();
+     $('#education').css('display','none');
+    $('#work').css('display','block');
+    $("#pd2").addClass("active");
+    });
+</script>
+<script>
+    $(document).on('submit','#workDetail',function(e){
+  e.preventDefault();
+     $('#work').css('display','none');
+    $('#skill').css('display','block');
+    $("#pd3").addClass("active");
+    });
+</script>
+<script>
+    $(document).on('submit','#skillDetail',function(e){
+   e.preventDefault();
+     $('#skill').css('display','none');
+    $('#final').css('display','block');
+    $("#pd4").addClass("active");
+    });
+</script>
+<script>
+    $(document).on('submit','#finalDetail',function(e){
+    alert('submitted success');
+
+    });
+</script>
+<script>
+
+
+ $('#country').change(function()
+    {
+    var countryId = $(this).val();
+      if(countryId!='') {
+          $.ajax({
+              type: "GET",
+              url: '{% url 'applicant:getstate' %}',
+              dataType: "json",
+              data: {countryId: countryId},
+              success: function(data) {
+              alert(data)
+
+              },
+              error: function(){
+              }
+          });
+      }else{
+          $('select[name="country"]').append('<option value="">Select Country First</option>');
+      }
+    });
+
+
+function submitBasic()
+{
+    var firstname=$("#firstname").val();
+    var lastname=$("#lastname").val();
+    var email=$("#email").val();
+    var phone=$("#phone").val();
+    var gender=$("#gender").val();
+    var marital_status=$("#marital_status").val();
+    var dob=$("#dob").val();
+    var language=$("#language").val();
+    var country=$("#country").val();
+    var state=$("#state").val();
+
+    if(firstname==''){
+      $("#firstname").css('border-color','red');
+      $("#firstname").focus();
+      return false;
+   } else {
+      $("#firstname").css('border-color','green');
+   }
+   if(email==''){
+      $("#email").css('border-color','red');
+      $("#email").focus();
+      return false;
+   } else {
+      $("#email").css('border-color','green');
+   }
+
+   if(gender==''){
+      $("#gender").css('border-color','red');
+      $("#gender").focus();
+      return false;
+   } else {
+      $("#gender").css('border-color','green');
+   }
+
+   if(country==''){
+      $("#country").css('border-color','red');
+      $("#country").focus();
+      return false;
+   } else {
+      $("#country").css('border-color','green');
+   }
+   if(state==''){
+      $("#state").css('border-color','red');
+      $("#state").focus();
+      return false;
+   } else {
+      $("#state").css('border-color','green');
+   }
+  $.ajax({
+   url:  'basicDetail',
+   type: 'POST',
+   data: {'firstname':firstname,'lastname':lastname,'email':email,'phone':phone,'gender':gender,'marital_status':marital_status,'dob':dob,
+   'language':language,'country':country,'state':state},
+   success:function(data){
+     console.log(data);
+      //alert(data);
+      //return false;
+    $('#basic').css('display','none');
+    $('#personal').css('display','block');
+    $("#pd1").addClass("active");
+   }
+  });
+
+
+}
+</script>
+
+{% endblock %}

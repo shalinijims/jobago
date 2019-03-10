@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  {% load static %}
+  {% load bootstrap4 %}
+  {% load i18n %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+  <title>{% block title %}Jobago.com{% endblock %}</title>
+  
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" type="text/css" href="{% static 'applicant/css/style.css' %}">
+ <link rel="stylesheet" type="text/css" href="{% static 'applicant/css/main.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'applicant/css/navbar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'applicant/css/socialMedia.css' %}">
+
+  <script src="{% static 'applicant/js/main.js' %}"></script>
+  <script src="{% static 'applicant/js/script.js' %}"></script>
+  <link href="{% static 'applicant/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+
+ <!--  base nav bar -->
+{% include 'applicant/layouts/header.html' %}
+
+   <!--  your content -->
+ <div class="container-fluid mt-4">
+
+    {% bootstrap_messages %}
+
+    {% block content %}
+        No content.
+    {% endblock %}
+
+</div>
+
+
+ <!--  base footer -->
+{% include 'applicant/layouts/footer.html' %}
+
+</div>
+ <script src="{% static 'applicant/js/main.js' %}"></script>
+  <script src="{% static 'applicant/js/script.js' %}"></script>
+<script src="{% static 'applicant/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'applicant/vendor/popper/popper.min.js' %}"></script>
+<script src="{% static 'applicant/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

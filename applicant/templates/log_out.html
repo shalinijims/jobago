@@ -1,0 +1,23 @@
+{% extends 'applicant/layouts/master.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    <div class="container-fluid">
+  <div class="row">
+     <div class="col-xs-6 col-md-4" style="float: none; margin: 0 auto;">
+    <h4>{% trans 'Logged out' %}</h4>
+
+    <p>
+        {% trans 'Thanks for spending some quality time with the site today.' %}
+    </p>
+
+    <p>
+        <a href="{% url 'applicant:log_in' %}">{% trans 'Log in again' %}</a>
+    </p>
+</div>
+</div>
+</div>
+
+{% endblock %}

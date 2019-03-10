@@ -1,0 +1,41 @@
+{% extends 'applicant/layouts/master.html' %}
+   {% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+ <link rel="stylesheet" type="text/css" href="{% static 'applicant/css/accounts.css' %}">
+
+ <div class="row">
+    <div class="col-md-12 col-md-offset-3">
+    <form method="post" id="msform">
+       <fieldset id="basic">
+                <h2 class="fs-title">{% trans 'Log in' %}</h2>
+               <h3 class="fs-subtitle"></h3>
+                   {% csrf_token %}
+                  {{ form.email }} {{ form.email.errors }}
+                  {{ form.password }} {{ form.password.errors }}
+
+                  <button class="action-button" >{% trans 'Log in' %}</button>
+
+        <hr>
+           <ul>
+       
+            <a href="#">{% trans 'Forgot your password?' %}</a>
+       
+    
+           </ul>
+       </fieldset>
+      
+     
+    </form>
+    </div>
+  </div>
+
+
+
+
+
+   
+
+{% endblock %}

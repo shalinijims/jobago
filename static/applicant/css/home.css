@@ -1,0 +1,65 @@
+#home-pricing{
+    border-top: 1px solid #eee;
+    /*min-height: 100vh;*/
+    background: #fefefe;
+    position: relative;
+}
+#home-pricing ul{
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+#home-pricing li {
+  padding-left: 1.8em;
+  line-height: 40px;
+}
+#home-pricing li:before {
+  content: "done";
+  font-family: 'Material Icons';
+  display: inline-block;
+  margin-left: -1.8em; 
+  width: 1.8em;
+  font-size: 20px;
+  position: relative;
+  top: 3px;
+}
+.bg-navy{
+    background: #000022;
+}
+#home-pricing .bg-navy, #home-pricing .bg-navy p, #home-pricing .bg-navy ul{
+    color: #fff;
+}
+#home-pricing .container, #home-pricing .container-fluid{
+    /*min-height: 50vh;*/
+}
+.home-pricing-card {
+  padding: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(204, 204, 204);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 350px;
+  /*min-height: 450px;*/
+  right: 150px;
+  top:200px;
+  -webkit-filter: drop-shadow(1px 2px 5px rgba(255,255,255, 0.5));
+    filter: drop-shadow(1px 2px 5px rgba(255,255,255, 0.5));
+}
+
+.home-button-block select, .home-button-block select:focus, #home-pricing select, #home-pricing select:focus{
+    display: inline-block;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 40 14'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>") !important;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0 !important;
+    padding: 5px 10px;
+    outline: none;
+    box-shadow: none;
+}
