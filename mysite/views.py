@@ -8,3 +8,7 @@ def home(request):
 
 def schedulePage(request):
         return render(request,'schedulePage.html')
+
+
+def login(request):
+        return render(request,'login.html')
